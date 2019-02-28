@@ -1,0 +1,11 @@
+(define (main)
+        (setPort (open (getElement ScamArgs 1) 'read))
+        (define arg1 (readExpr))
+        (define arg2 (readExpr))
+        (define numLevels (readExpr))
+        (println (crazyTriangle arg1 arg2))
+        )
+
+(define (crazyTriangle arg1 arg2)
+        (println arg1 " "  arg2)
+        )
