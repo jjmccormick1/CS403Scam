@@ -8,24 +8,25 @@
 
 (define (crazyTriangle left right)
   (lambda (numLevels)  
+        
         ;Finds the value of the number to print
         (define (getNum numLevel numColumn)
             (cond
-            ((= numColumns 0) left)  ; If at far left side, return left    
-            ((= levels column) right) ;if at far right side, return right
-            (else                    ; otherwise, recur
-                (+ 
-                    (getNum (- numLevel 1) (- numColumn 1)) ;up and over
-                    (helper (- numLevel 1) numColumn)        ; above
-                )
-                )
+                ((= numColumns 0) left)  ; If at far left side, return left    
+                ((= levels column) right) ;if at far right side, return right
+                (else                    ; otherwise, recur
+                    (+  (getNum (- numLevel 1) (- numColumn 1)) ;up and over
+                        (helper (- numLevel 1) numColumn)        ; above
+                    )
+                    )
             )
         )
         
         (define (padSpaces numSpaces)
             (cond
-                ( (> numSpaces 0) 
-                    ( (print " ") 
+                ((> numSpaces 0) 
+                    (
+                      (print " ")
                       (padSpaces (- numSpaces 1))
                     )
                 )
