@@ -2,14 +2,39 @@
         (setPort (open (getElement ScamArgs 1) 'read))
         (define n (readExpr))
         (define root (readExpr))
-        (pow n root root)
+        (print "((root-n " n ") " root ") is " )
+        (println (fmt "%.15f" ((root-n n) root)))
 )
 
-
-(define (pow p num total)
-    (cond
-        ( ( > p 0) (pow (- p 1) (* num total)) 
-          (else total)
+(define (root-n pow)
+    (lambda (num)
+        (define guess1 (/ num 2))
+        (define pow1  (- pow 1))
+        (define (root num guess)
+            (define next 
+                (real (/
+                    (+ (* pow1 guess) (/ num  (power pow1 guess guess)))
+                    pow
+                ))
+            )
+            (cond 
+                ((not (good-enough? next guess)) (root num next)
+                 
+                )(else guess)
+            )
         )
+        (real (root num guess1))
     )
+)
+
+(define (power p num total)
+    (cond
+        ( ( > p 1) 
+            (power (- p 1) num (* num total))  
+        )
+        (else total)
+    )
+)
+(define (good-enough? guess x)
+    (< (abs (- guess x)) 0.00000001)
 )
