@@ -8,19 +8,32 @@
     (define (iter depth sum)
         (cond 
              ((<= depth num) 
-                (iter (+ depth 1 ) 
-                    (/ 1 
+                (inspect depth)
+                (inspect num)
+                (inspect sum)
+                (inspect (iter (+ depth 1 ) 
+                    (real (/ 1 
                         (+ 1
                             (/ 1 
-                                (+ (* 2 depth)
-                                    (/ 1 sum)
-                                )   
+                                (inspect (+ (* 2 (- num depth))
+                                    (/ 1 
+                                        (cond
+                                            ((= depth 0)
+                                            (inspect sum)
+                                                1)
+                                            (else (inspect sum)
+                                                sum)
+                                        )
+                                    )
+                                )  ) 
                             )
                         )   
-                    )
-                )
+                    ))
+                ))
             )
-        )        
+            (else sum)
+        )   
+
     )
-    ( + 2 (iter 0 1))
+    (inspect (real ( + 2 (iter 0 0.0))))
 )

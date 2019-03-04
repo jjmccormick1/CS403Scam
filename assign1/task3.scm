@@ -3,12 +3,12 @@
         (define n (readExpr))
         (define root (readExpr))
         (print "((root-n " n ") " root ") is " )
-        (println (fmt "%.15f" ((root-n n) root)))
+        (println (fmt "%.15f" ((root-n (real n)) (real root))))
 )
 
 (define (root-n pow)
     (lambda (num)
-        (define guess1 (/ num 2))
+        (define guess1 (/ num 3))
         (define pow1  (- pow 1))
         (define (root num guess)
             (define next 
@@ -20,7 +20,7 @@
             (cond 
                 ((not (good-enough? next guess)) (root num next)
                  
-                )(else guess)
+                )(else next)
             )
         )
         (real (root num guess1))
@@ -36,5 +36,5 @@
     )
 )
 (define (good-enough? guess x)
-    (< (abs (- guess x)) 0.00000001)
+    (< (abs (- guess x)) 0.0000000000000001)
 )

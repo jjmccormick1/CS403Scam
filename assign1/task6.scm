@@ -1,1 +1,34 @@
- 
+(define (main)
+        (setPort (open (getElement ScamArgs 1) 'read))
+        (define func (eval (readExpr) this))
+        (define arg (readExpr))
+        (println "(S <function anonymous(x)> " arg ") is " (fmt "%.15f"(S func arg) ))
+        (println "(w <function anonymous(x)> " arg ") is "  (fmt "%.15f" (w func arg)))
+) 
+
+(define (w func num) 
+    (cond
+        ((> num 0) 
+            (define s (S func num))
+            (define Sp1 (S func (+ num 1)))
+            (define Sm1 (S func (- num 1)))
+            (real ( / 
+                (- (* Sp1 Sm1) (* s s))
+                (-  (+ Sp1 Sm1)(* 2 s))
+            ))
+        )
+        (else (real (func num)))
+    )
+)
+
+(define (S func n)
+    (define (iter i sum)
+        (cond 
+            ((<= i n)
+                (iter (+ i 1) (+ sum (func i)) )
+            )
+            (else sum)
+        )
+    )
+    (real (iter 0 0))
+)
