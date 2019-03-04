@@ -15,7 +15,7 @@
                     (real (/ 1 
                         (+ 1
                             (/ 1 
-                                (inspect (+ (* 2 (- num depth))
+                                (inspect (+ (inspect (* 2 (- num depth)))
                                     (/ 1 
                                         (cond
                                             ((= depth 0)
