@@ -4,26 +4,26 @@
         (define arg (readExpr))
         (define result (efcr arg))
         (print "(ecfr " arg ") is ")
-        (println (fmt "%.25f" (efcr arg)) ")")
+        (println (fmt "%.25f" (efcr arg)) )
 )
 
 (define (efcr num)
     (define (recur depth)
         (cond 
              ((<= depth num) 
-                (/ 1 
+                (inspect (/ 1 
                     (+ 1
                         (/ 1 
                             (+ (* 2 depth)
                                 (/ 1 
                                     ( + 1
-                                        (recur (+ depth 1))
+                                        (inspect (recur (+ depth 1)))
                                     )
                                 ) 
                             )   
                         )
                     )   
-                )
+                ))
             )
             (else 0)
         )        

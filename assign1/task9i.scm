@@ -3,8 +3,8 @@
         (setPort (open (getElement ScamArgs 1) 'read))
         (define arg (readExpr))
         (define ram  (ramanujani arg))
-        (println "(ramanujani " arg ") is " (fmt "%.25f" ram) ")")
-        ;(println "$4$")
+        (println "(ramanujani " arg ") is " (fmt "%.25f" ram) )
+        (println "$4$")
 )
 
 (define (ramanujani depth)
