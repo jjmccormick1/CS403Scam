@@ -11,19 +11,19 @@
     (define (recur depth)
         (cond 
              ((<= depth num) 
-                (inspect (/ 1 
+                (/ 1 
                     (+ 1
                         (/ 1 
                             (+ (* 2 depth)
                                 (/ 1 
                                     ( + 1
-                                        (inspect (recur (+ depth 1)))
+                                         (recur (+ depth 1))
                                     )
                                 ) 
                             )   
                         )
                     )   
-                ))
+                )
             )
             (else 0)
         )        

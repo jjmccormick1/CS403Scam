@@ -1,31 +1,31 @@
-(define (main)
+ (define (main)
         (setPort (open (getElement ScamArgs 1) 'read))
         (define arg (readExpr))
-        (define result (efcr arg))
-        (print "(ecfi" arg ") is ")
-        (println (fmt "%.25f" (efcr arg)) )
+        (print "(ecfi " arg ") is ")
+        (println (fmt "%.25f" (efci arg)) )
 )
 
-(define (efcr num)
-    (define (recur depth)
+(define (efci num)
+    (define (iter depth sum)
         (cond 
-             ((<= depth num) 
-                (inspect (/ 1 
-                    (+ 1
-                        (/ 1 
-                            (+ (* 2 depth)
-                                (/ 1 
-                                    ( + 1
-                                        (inspect (recur (+ depth 1)))
-                                    )
-                                ) 
-                            )   
-                        )
-                    )   
-                ))
+             ((< 0  depth) 
+                (iter (- depth 1 ) 
+                    (/ 1.0
+                        (+ 1.0
+                            (/ 1.0 
+                                (+ (* 2  depth)
+                                    (real (/ 1.0 
+                                       (+ 1.0 sum)
+                                    ))
+                                )  
+                            )
+                        )   
+                    )
+                )
             )
-            (else 0)
-        )        
+            (else (real sum))
+        )   
+
     )
-    (real ( + 2 (recur 1.0)))
+    (real ( + 2 (iter num 0)))
 )

@@ -8,24 +8,24 @@
 (define (efci num)
     (define (iter depth sum)
         (cond 
-             ((<= depth num) 
-                (real (iter (+ depth 1 ) 
-                    (real (/ 1 
-                        (+ 1
-                            (/ 1 
-                                (+  (* 2 (- (+ 1 num) depth))
-                                    (/ 1 
-                                       sum
-                                    )
+             ((< 0  depth) 
+                (iter (- depth 1 ) 
+                    (/ 1.0
+                        (+ 1.0
+                            (/ 1.0 
+                                (+ (* 2  depth)
+                                    (real (/ 1.0 
+                                       (+ 1.0 sum)
+                                    ))
                                 )  
                             )
                         )   
-                    ))
-                ))
+                    )
+                )
             )
-            (else sum)
+            (else (real sum))
         )   
 
     )
-    (real ( + 2 (iter 0 1)))
+    (real ( + 2 (iter num 0)))
 )
