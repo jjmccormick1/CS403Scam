@@ -11,7 +11,7 @@
   (lambda (x y)
     (define (iter r s t)
       (cond
-        ((= t thresh) (0))
+        ((= t thresh) 0)
         (else 
             (cond
                 ((> 4 (+ (* r r) (* s s))) (iter 
