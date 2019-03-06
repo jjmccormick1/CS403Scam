@@ -1,11 +1,17 @@
 #!/bin/sh
 
-TESTS=preliminary
+TESTS=tests
 
 echo "Task 1 - Working and Tested\n"
 scam -r task1.scm preliminary/task1.0 > preliminary/task1.0.mine
 diff -s $TESTS/task1.0.mine $TESTS/task1.0.expected
  
+echo "\nTesting file walk\n"
+for task1 in /$TESTS/task1.*; do 
+    scam -r task1.scm "$task1" > "$task1".mine
+    diff -s "$task1".expected "$task1".mine
+
+done
 echo "\nTask 2 - Working\n"
 scam -r task2.scm preliminary/task2.0 > preliminary/task2.0.mine
 diff -s $TESTS/task2.0.mine $TESTS/task2.0.expected
