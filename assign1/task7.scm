@@ -29,16 +29,23 @@
     (+ num num)
 )
 
-(define (halve num)
-    (define (iter minus n)
+(define (halve x)
+    (define (iter num count total)
         (cond
-            ((> n 1) (iter (+ 1 minus) (- n 2)))
-            (else minus)
-        )
-    )  
-    (iter 0 num)      
+            ((<= ( - num count) 0)
+                total
+                )
+            ( (> (double (double count)) num)
+                (iter (- num (double count)) 1 (+ total count))
+                )
+            ( (< (double count) num)
+                (iter num (double count) total)
+                )
+        )    
+    )
+    (iter x 1 0 )
 )
-    
+
 (define (div2? num)
     (== (halve num) (halve (+ num 1)))
 )
