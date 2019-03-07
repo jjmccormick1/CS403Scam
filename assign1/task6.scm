@@ -8,15 +8,13 @@
 
 (define (w func num) 
     (cond
-        ((> num 0) 
-            (define s (real (S func num)))
+        ((!= num 0) 
+            (define s (real (S func (real num))))
             (define Sp1 (real (S func (+ num 1.0))))
             (define Sm1 (real (S func (- num 1.0))))
             (real ( / 
-                (real (- (* Sp1 Sm1)
-                         (* s s)
-                        ))
-                (real (-  (+ Sp1  Sm1) (* 2.0 s)))
+                (real (- (* Sp1 Sm1) (* s s)))
+                (real (+ Sp1 (+ Sm1 (* -2 s))))
             ))
         )
         (else (real (func num)))
