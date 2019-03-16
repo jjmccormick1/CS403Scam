@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TESTS=tests
+TESTS=preliminary
 
 echo "Task 1 - Working and Tested\n"
 scam -r task1.scm preliminary/task1.0 > preliminary/task1.0.mine
