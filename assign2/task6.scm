@@ -3,7 +3,7 @@
         (define env this)
         (define (iter expr)
             (if (not (eof?)) (begin (eval expr env) (iter (readExpr))))
-        )
+        )(setNilDisplay 'nil)
         (iter (readExpr))
         
         (env)

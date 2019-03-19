@@ -8,4 +8,62 @@
         (env)
 )
 
-(define (Stack 
+(define (Stack)
+    (define size 0)
+    (define store nil)
+    (cons store size)
+)
+
+(define (push stack in)
+    (define size (+ (cdr stack) 1))
+    (define store (cons in (car stack)))
+    (cons store size)
+)
+
+(define (speek stack)
+    (car(car stack))
+)
+
+(define (pop stack)
+    (define size (- (cdr stack) 1))
+    (define store (cdr (car stack)))
+    (cons store size)
+)
+
+(define (empty? stack)
+    (eq? (cdr stack) 0)
+)
+
+(define (ssize stack)
+    (cdr stack)
+)
+
+(define (Queue)
+    (define size 0)
+    (define store nil)
+    (cons store size)
+)
+
+(define (enqueue q in)
+    (define size (+ (cdr q) 1))
+    (define store (append (car q) (list in)))
+    (cons store size)
+)
+
+(define (dequeue q)
+    (define size (- (cdr q) 1))
+    (define store (cdr(car q)))
+    (cons store size)
+)
+
+(define (qpeek q)
+    (car (car q))
+)
+
+(define (empty? q)
+    (eq? (cdr q) 0)
+)
+
+(define (qsize q)
+    (cdr q)
+)
