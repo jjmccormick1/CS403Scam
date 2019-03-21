@@ -9,7 +9,7 @@
         (env)
 )
 
-(define (powerSet set)
+(define (powerset set)
     (cond 
         ((not (valid? set))
             (print "(nil)")
@@ -24,3 +24,9 @@
         )
     )
 )
+(define (powerSet set)
+  (if (null? set) '(())
+      (let ((rest (powerSet (cdr set))))
+        (append rest
+                (map (lambda (subset) (cons (car set) subset))
+                    rest)))))
