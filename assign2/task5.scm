@@ -8,17 +8,37 @@
         (env)
 )
 
-(define (create i . n)
-  ;; treat the second parameter as the accumulator, which is
-  ;; null on the first call (so we start with zero)
-  (let ((n (if (null? n)
-               zero
-               (car n))))
-    (if (= i 0)
-        n
-        (create
-         (- i 1)
-         (lambda (f)
-           (lambda (x)
-             (f ((n f) x))))))))
 
+(define (create i @)
+    (let ((n (if (null? @)
+               zero
+               (car @))))
+        (if (= i 0)
+            n
+            (create
+                (- i 1)
+                (lambda (f)
+                    (lambda (x)
+                        (f ((n f) x))
+                    )
+                )
+            )
+        )
+    )
+)
+(define zero
+  (lambda (f)
+    (lambda (x) x)))
+    
+(define pred
+    (lambda (n)
+        (lambda (f)
+            (lambda (x)
+                (((n (lambda (g) (lambda (h) (h (g f)))))
+                    (lambda (u) x))
+                        (lambda (u) u)
+                )
+            )
+        )   
+    )
+)
