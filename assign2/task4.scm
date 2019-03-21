@@ -9,6 +9,19 @@
 )
 
 (define (let*->lambdas function)
-    
-
+    (if (equal? (car (caddr function)) 'let*)
+    ; keep the original define
+    (append
+      (cons (car function)
+        ; keep the original parameters list
+        (cons (cadr function)
+          (cons 
+            (map (lambda (x) (cons 'lambda (list  (car x)))) (cadr (caddr function)))
+            nil
+            )
+          )
+        )
+      (cddr (caddr function))
+      )
+    )
 )
