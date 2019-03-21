@@ -1,3 +1,14 @@
+(define (main)
+        (setPort (open (getElement ScamArgs 1) 'read))
+        (define env this)
+        (define (iter expr)
+            (if (not (eof?)) (begin (eval expr env) (iter (readExpr))))
+        )
+        (iter (readExpr))
+        (env)
+)
+
+
 (define (node value left right)
         (define (display) (print value))
         this
@@ -19,14 +30,19 @@
                     )
                 )
             )
-    (iter "")
+    (iter root "")
 )
 
 (define (insertBST root val)
-    (define (iter nd)
-        (cond 
-            ((> nd'value val)
-                (if(nd'node nd'value 
-        )
+    (cond ((null? root) (node val nil nil))
+          ((= (root'value) val) root)
+          ((< val (root'value))
+            (node (root'value) 
+                  (insertBST (root'left) val)
+                  (root'right)))
+          (else (node (root'value)
+                      (root'left)
+                      (insertBST (root'right) val)))
+                      
     )
 )
