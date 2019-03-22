@@ -11,7 +11,7 @@
 
 (define (powerSet set)
   (if (null? set) '(())
-        (append (map (lambda (subset) (cons (car set) subset))
+        (merge (map (lambda (subset) (cons (car set) subset))
                     (powerSet (cdr set))
                 )
                 (powerSet (cdr set))
@@ -21,5 +21,16 @@
 
 
 
-
-
+(define (merge m n)
+    (cond 
+        ((null? m) n)
+        ((null? n) m)
+        ((> (length (car m)) (length (car n))) 
+            (cons (car n) (merge m (cdr n)))
+        )
+        
+        (else
+            (cons (car m) (merge (cdr m) n))
+        )
+    )  
+)
