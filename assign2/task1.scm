@@ -8,14 +8,14 @@
         (env)
 )
 
-(define (range start stop step)
+(define (range start stop s)
     (define (iter num)
         (cond 
             ((or
-                (and (> step 0) (< num stop))
-                (and (< step 0) (> num stop))
+                (and (> s 0) (< num stop))
+                (and (< s 0) (> num stop))
              )
-             (cons num (iter (+ num step)))
+             (cons num (iter (+ num s)))
             )
             (else nil)
         )

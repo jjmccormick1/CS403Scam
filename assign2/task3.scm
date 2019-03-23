@@ -9,15 +9,11 @@
 )
 
 (define (Stack)
-    (define size 0)
-    (define store nil)
-    (cons store size)
+    (cons nil 0)
 )
 
 (define (push stack in)
-    (define size (+ (cdr stack) 1))
-    (define store (cons in (car stack)))
-    (cons store size)
+    (cons (cons in (car stack)) (+ (cdr stack) 1))
 )
 
 (define (speek stack)
@@ -25,9 +21,7 @@
 )
 
 (define (pop stack)
-    (define size (- (cdr stack) 1))
-    (define store (cdr (car stack)))
-    (cons store size)
+    (cons (cdr (car stack)) (- (cdr stack) 1))
 )
 
 (define (empty? stack)
@@ -39,21 +33,15 @@
 )
 
 (define (Queue)
-    (define size 0)
-    (define store nil)
-    (cons store size)
+    (cons nil 0)
 )
 
 (define (enqueue q in)
-    (define size (+ (cdr q) 1))
-    (define store (append (car q) (list in)))
-    (cons store size)
+    (cons (append (car q) (list in)) (+ (cdr q) 1))
 )
 
 (define (dequeue q)
-    (define size (- (cdr q) 1))
-    (define store (cdr(car q)))
-    (cons store size)
+    (cons (cdr(car q)) (- (cdr q) 1))
 )
 
 (define (qpeek q)
