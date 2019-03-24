@@ -1,2 +1,2 @@
-(println (((create 4) (lambda (x) (+ x 1))) 0))
-(println (((pred (create 4)) (lambda (x) (+ x 1))) 0))
+(println (((create 20) (lambda (x) (+ x 1))) 0))
+(println (((pred (create 20)) (lambda (x) (+ x 1))) 0))

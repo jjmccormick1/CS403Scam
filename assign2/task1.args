@@ -1,2 +1,2 @@
-(println (range 0 10 5))
-    (for-loop (range 0 10 5) (lambda (x) (inspect x)))
+(println (range -10 10 5))
+(for-loop (range -10 10 5) (lambda (x) (inspect (+ 1 x))))

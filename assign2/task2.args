@@ -1,0 +1,3 @@
+(define (f a b c) (* a b c))
+(inspect ((curry f) 3))
+(inspect (((curry f) 3 3) 4))

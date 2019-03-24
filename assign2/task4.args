@@ -1,1 +1,1 @@
-(println (let*->lambdas `(define (f x) (let* ((y 2) (z y)) (+ x y z)))))
+(println (let*->lambdas `(define (f x) (let* ((y 2) (z y) (s 3)) (* s (+ x y z))))))
