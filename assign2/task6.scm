@@ -11,10 +11,12 @@
 
 (define (powerSet set)
   (if (null? set) '(())
-        (merge (map (lambda (subset) (cons (car set) subset))
-                    (powerSet (cdr set))
+        (let ((pow (powerSet (cdr set))))
+            (merge (map (lambda (subset) (cons (car set) subset))
+                     pow
                 )
-                (powerSet (cdr set))
+                pow
+            )
         )
   )
 )

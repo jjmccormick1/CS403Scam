@@ -12,20 +12,16 @@
     (cons nil 0)
 )
 
+(define (pop stack)
+    (cons (cdr (car stack)) (- (cdr stack) 1))
+)
+
 (define (push stack in)
     (cons (cons in (car stack)) (+ (cdr stack) 1))
 )
 
 (define (speek stack)
     (car(car stack))
-)
-
-(define (pop stack)
-    (cons (cdr (car stack)) (- (cdr stack) 1))
-)
-
-(define (empty? stack)
-    (eq? (cdr stack) 0)
 )
 
 (define (ssize stack)
@@ -37,20 +33,21 @@
 )
 
 (define (enqueue q in)
-    (cons (append (car q) (list in)) (+ (cdr q) 1))
+    (define sz (+ (cdr q) 1))
+    (define str (append (car q) (list in) ))
+    (cons str sz)
 )
 
 (define (dequeue q)
-    (cons (cdr(car q)) (- (cdr q) 1))
+    (define sz (- (cdr q) 1))
+    (define str (cdr(car q)))
+    (cons  str sz)
 )
 
 (define (qpeek q)
     (car (car q))
 )
 
-(define (empty? q)
-    (eq? (cdr q) 0)
-)
 
 (define (qsize q)
     (cdr q)
