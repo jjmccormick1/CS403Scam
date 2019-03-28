@@ -24,31 +24,56 @@
     (car(car stack))
 )
 
+(define (empty? stack)
+    (eq? (cdr stack) 0)
+)
+
 (define (ssize stack)
     (cdr stack)
 )
 
 (define (Queue)
-    (cons nil 0)
+    (define l (Stack))
+    (define r (Stack))
+    (cons l r)
 )
 
 (define (enqueue q in)
-    (define sz (+ (cdr q) 1))
-    (define str (append (car q) (list in) ))
-    (cons str sz)
+    (cons (push (car q) in) (cdr q))
 )
 
 (define (dequeue q)
-    (define sz (- (cdr q) 1))
-    (define str (cdr(car q)))
-    (cons  str sz)
+    (cond 
+        ((not (empty? (cdr q)))
+            (cons (car q) (pop (cdr q)))
+        )
+        (else 
+            (dequeue (revers q))
+        )
+    )
 )
 
 (define (qpeek q)
-    (car (car q))
+    (cond 
+        ((not (empty? (cdr q)))
+            (speek (cdr q))
+        )
+        (else 
+            (qpeek (revers q))
+        )
+    )
 )
 
 
 (define (qsize q)
-    (cdr q)
+    (+ (ssize (car q)) (ssize (cdr q)))
+)
+
+(define (revers q)
+    (cond 
+        ((not (empty? (car q)))
+            (revers (cons (pop (car q)) (push (cdr q) (speek (car q)))))
+        )
+        (else q)
+    )
 )
