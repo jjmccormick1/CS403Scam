@@ -1,0 +1,1 @@
+(scoping '* ((define (zurp x) (define y (+ x 1)) this) 5))
