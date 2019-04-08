@@ -67,5 +67,26 @@
 (define (pairs s t)
     (cons-stream
         (list (stream-car s) (stream-car t))
-        
+        (shuffle 
+            (stream-map (lambda (x) (list (stream-car s) x)) (stream-cdr t))
+            (pairs (stream-cdr s) (stream-cdr t))
+        )
+    )   
+)
+
+(define (shuffle s t)
+    (cons-stream
+        (stream-car s)
+        (shuffle t (stream-cdr s))
+    )   
+)
+
+(define (shuffle2 s t)
+    (define a (stream-car s))
+    (define b (stream-car t))
+    (cond
+        ((< (cadr a) (cadr b))
+            (cons-stream a (shuffle2 (stream-cdr s) t))
+         (< (cadr b) (cadr a))
+            (
 )
