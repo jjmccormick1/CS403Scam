@@ -1,0 +1,21 @@
+(include "strutils.scm")
+
+(define (main)
+        (setPort (open (getElement ScamArgs 1) 'read))
+        (define env this)
+        (define (iter expr)
+            (if (not (eof?)) (begin (eval expr env) (iter (readExpr))))
+        )
+        (iter (readExpr))
+        (env)
+)
+
+(define (quad a b c step)
+    (define (iter x)
+        (cons-stream (real (+ (* a x x) (* b x) (- c))) (iter (+ x step)))
+    )
+    (iter 0)
+)
+
+(define (integrate)
+)
