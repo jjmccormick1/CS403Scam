@@ -1,0 +1,2 @@
+(sdisplay 5 (weighted-pairs ints ints +))
+(sdisplay 1 (ramanujan)) (println)

@@ -1,6 +1,7 @@
  
 (define ones (cons-stream 1 ones))
 (define twos (cons-stream 2 ones))
+(define ints (cons-stream 1 (add-streams ones ints)))
 (define alt-ones 
     (cons-stream 1 (cons-stream -1 alt-ones))
 )

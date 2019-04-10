@@ -9,6 +9,7 @@
 )
 
 (define (scoping sym expr)
+    (ppTable expr)
     (define (iter env)
         (cond 
             ((null? env)

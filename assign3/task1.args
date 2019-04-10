@@ -1,4 +1,4 @@
-(scoping 'x ((define (zurp x) (define y (+ x 1)) this) 5))
+(scoping 'x ((define (zurp x) (define (y w) (+ x w 1)) this) 5))
 (scoping '* ((define (zurp x) (define y (+ x 1)) this) 5))
 (scoping 'cdr ((define (zurp x) (define y (+ x 1)) this) 5))
 (scoping 'cs403sucks ((define (zurp x) (define y (+ x 1)) this) 5))
