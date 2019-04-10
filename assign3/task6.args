@@ -3,8 +3,9 @@
 (sdisplay 5 qs) (println)
 
 (define is (integrate qs 1))
+(sdisplay 5 is) (println)
 (define ds (derivate is 1 0))
 
-(sdisplay 5 is) (println)
+
 (sdisplay 5 ds) (println)
 (inspect (same-stream? qs ds 10 .001))
