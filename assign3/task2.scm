@@ -11,6 +11,7 @@
 (define (replace func args)
     (define body (get 'code func))
     (define (iter code)
+        (print code)
         (cond 
             ((null? code) code)
             ((object? code) code)

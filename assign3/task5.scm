@@ -19,7 +19,7 @@
                 (stream-car s)
                 (cons-stream
                     accum
-                    (iter (stream-cdr s) (stream-cdr count) (op accum (stream-car s)))
+                    (iter (stream-cdr s) (stream-cdr count) (op (stream-car s) accum))
                 )   
             )
         )    

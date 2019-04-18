@@ -1,0 +1,3 @@
+(------------------------------------
+EXCEPTION: generalException
+file strutils.scm,line 15: wrong types for '=': CONS and INTEGER

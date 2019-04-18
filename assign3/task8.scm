@@ -12,9 +12,27 @@
         (env)
 )
 
-(define (ramanujan)
-
+(define (weight x)
+    (define l (car x))
+    (define r (cdr x))
+    (+ (* l l l) (* r r r))
 )
+
+(define (ramanujan)
+    (define pair (weighted-pairs ints ints +))
+    (sdisplay pair 10)
+    (define (iter str)
+        (define current (stream-car str))
+        (define next (stream-car (stream-cdr str)))
+        (cond
+            ((= (weight current) (weight next))
+                (cons-stream (weight current) (iter (stream-cdr str))))
+            (else (iter (stream-cdr str)))
+        )        
+    )
+    (iter pair)
+)
+
 
 (define (merge-weighted i j weight)
     (cond 
@@ -22,14 +40,14 @@
         ((stream-null? j) i)
         (else
             (cond
-                ((<= (weight (car (stream-car i)) (cdr (stream-car i)))
+                ((> (weight (car (stream-car i)) (cdr (stream-car i)))
                      (weight (car (stream-car j)) (cdr (stream-car j))))
-                 (cons-stream (stream-car i) 
-                            (merge-weighted (stream-cdr i) j weight)
+                 (cons-stream (stream-car j) 
+                            (merge-weighted  i (stream-cdr j) weight)
                  ))
                  (else
-                    (cons-stream (stream-car j) 
-                            (merge-weighted i (stream-cdr j) weight)
+                    (cons-stream (stream-car i) 
+                            (merge-weighted  (stream-cdr i) j weight)
                     )
                  )
             )
@@ -38,9 +56,9 @@
 )
 (define (weighted-pairs i j weight)
     (cons-stream 
-        (list (stream-car i) (stream-car j))
+        (cons  (stream-car i) (stream-car j))
         (merge-weighted
-            (stream-map (lambda (x) (list (stream-car i) x)) (stream-cdr j))
+            (stream-map (lambda (x) (cons (stream-car i)  x)) (stream-cdr j))
             (weighted-pairs (stream-cdr i) (stream-cdr j) weight)
             weight
         )

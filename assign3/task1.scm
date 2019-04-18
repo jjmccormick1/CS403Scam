@@ -9,20 +9,20 @@
 )
 
 (define (scoping sym expr)
-    (ppTable expr)
     (define (iter env)
         (cond 
             ((null? env)
-                (println "undefined"))
+                'undefined)
              ((local? sym env)
-                (println "free"))
+                'free)
              (else (iter (dot env __context)))
         )    
     )
     (cond 
         ((local? sym expr)
-            (println "bound"))
+            'bound)
         (else (iter expr))
     )
 )
+
 

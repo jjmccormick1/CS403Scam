@@ -1,0 +1,3 @@
+------------------------------------
+EXCEPTION: undefinedVariable
+file go.lib,line 1: variable main is undefined

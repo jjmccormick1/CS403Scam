@@ -1,0 +1,3 @@
+------------------------------------
+EXCEPTION: syntaxException
+file task3.scm,line 15: expecting CLOSE_PARENTHESIS, found END_OF_INPUT instead

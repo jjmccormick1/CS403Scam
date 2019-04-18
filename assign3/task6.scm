@@ -28,5 +28,9 @@
 )
 
 (define (derivate str step const)
-
+    (define (iter s prev)
+        (define next (- (* 2 (/  (stream-car s) step)) prev))
+        (cons-stream next (iter (stream-cdr s) next))
+    )
+    (iter str const)
 )

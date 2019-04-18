@@ -1,0 +1,7 @@
+(define (square x)
+    (* y x)
+    )
+(square 48) is <exception undefinedVariable>
+------------------------------------
+EXCEPTION: undefinedVariable
+file task2.scm,line 19: variable y is undefined

@@ -54,6 +54,10 @@
 )
 
 (define (stream-map f s)
+    (if
+        (stream-null? s) 
+        s
+    )
     (cons-stream 
         (f (stream-car s))
         (stream-map f (stream-cdr s))

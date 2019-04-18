@@ -1,0 +1,4 @@
+(same-stream? ones ones*f 3 0.0010000000) is <exception undefinedVariable>
+------------------------------------
+EXCEPTION: undefinedVariable
+file ./tests/task6.1,line 7: variable same-stream? is undefined

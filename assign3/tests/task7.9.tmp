@@ -1,0 +1,3 @@
+(------------------------------------
+EXCEPTION: generalException
+file main.lib,line 428: attempt to take car of an empty list
