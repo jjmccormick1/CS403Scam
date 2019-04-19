@@ -1,0 +1,50 @@
+(quote (lambda (z) (+ (* x y) z))) is (lambda (z) (+ (* x y) z))
+(almost-square 24) is 625
+code is (begin ((lambda (y) (inspect (quote (lambda (z) (+ (* x y) z)))) (* y y)) (+ x 1)))
+code is (((lambda (y) (inspect (quote (lambda (z) (+ (* x y) z)))) (* y y)) (+ x 1)))
+code is ((lambda (y) (inspect (quote (lambda (z) (+ (* x y) z)))) (* y y)) (+ x 1))
+code is (lambda (y) (inspect (quote (lambda (z) (+ (* x y) z)))) (* y y))
+code is ((y) (inspect (quote (lambda (z) (+ (* x y) z)))) (* y y))
+code is (y)
+code is nil
+code is ((inspect (quote (lambda (z) (+ (* x y) z)))) (* y y))
+code is (inspect (quote (lambda (z) (+ (* x y) z))))
+code is ((quote (lambda (z) (+ (* x y) z))))
+code is (quote (lambda (z) (+ (* x y) z)))
+code is ((lambda (z) (+ (* x y) z)))
+code is (lambda (z) (+ (* x y) z))
+code is ((z) (+ (* x y) z))
+code is (z)
+code is nil
+code is ((+ (* x y) z))
+code is (+ (* x y) z)
+code is ((* x y) z)
+code is (* x y)
+code is (x y)
+code is (y)
+code is nil
+code is (z)
+code is nil
+code is nil
+code is nil
+code is nil
+code is ((* y y))
+code is (* y y)
+code is (y y)
+code is (y)
+code is nil
+code is nil
+code is ((+ x 1))
+code is (+ x 1)
+code is (x 1)
+code is (1)
+code is nil
+code is nil
+code is nil
+code is (x)
+code is nil
+(define (almost-square x)
+    ((lambda (y) (inspect (quote (lambda (z) (<builtin +(@)> (<builtin *(@)> x y) z)))) (<builtin *(@)> y y)) (<builtin +(@)> x 1))
+    )
+(quote (lambda (z) (<builtin +(@)> (<builtin *(@)> x y) z))) is (lambda (z) (<builtin +(@)> (<builtin *(@)> x y) z))
+(almost-square 24) is 625
