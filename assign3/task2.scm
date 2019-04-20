@@ -12,8 +12,6 @@
     (define body (get 'code func))
     (define params (get 'parameters func))
     (define (iter code)
-        (inspect code)
-        (inspect (object? code))
         (cond 
             ((null? code) code)
             ((object? code) code)
